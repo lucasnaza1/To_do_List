@@ -5,6 +5,6 @@ const getAll = async () => {
   return tasks;
 };
 
-module.exporst = {
+module.exports = {
   getAll,
 };
