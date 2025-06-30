@@ -17,7 +17,7 @@ const addTask = async (task) => {
     dateUTC,
   ]);
 
-  return addedTask;
+  return { insertId: addedTask.insertId };
 };
 
 module.exports = {
