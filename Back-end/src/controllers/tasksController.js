@@ -7,8 +7,8 @@ const getAll = async (_req, res) => {
 };
 
 const addTask = async (req, res) => {
-  //const addedTask = await tasksModel.addTask()
-  return res.status(201).json(req.body);
+  const addedTask = await tasksModel.addTask(req.body);
+  return res.status(201).json(addedTask);
 };
 
 module.exports = {

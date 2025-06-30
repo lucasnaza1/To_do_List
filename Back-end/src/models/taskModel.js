@@ -6,11 +6,10 @@ const getAll = async () => {
 };
 
 const addTask = async (task) => {
-  const [title] = task;
+  const { title } = task;
+  const dateUTC = new Date(Date.now()).toUTCString();
 
   const query = "INSERT INTO tasks(title,status,created_at) VALUES(?,?,?)";
-
-  const dateUTC = new DataTransfer(Date.now()).toUTCString();
 
   const [addedTask] = await connection.execute(query, [
     title,
