@@ -25,9 +25,7 @@ Uma **To-do List** é um aplicativo simples desenvolvido com HTML, CSS e JavaScr
 
 ---
 
-## ⚙️ Configuração do Projeto (Back-end opcional com Node.js)
-
-> Caso seu projeto inclua um servidor back-end (como API em Node.js), siga os passos abaixo:
+## ⚙️ Configuração do Projeto (Back-end com Node.js)
 
 ```bash
 # Inicia o projeto com um package.json padrão
