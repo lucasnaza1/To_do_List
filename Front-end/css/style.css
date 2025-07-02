@@ -8,7 +8,7 @@
 }
 
 body {
-  background-color: #a6f0ff;
+  background-color: #d2f7ff;
 }
 
 main {
@@ -32,7 +32,6 @@ input {
   flex: 1;
   padding: 15px;
   border: 1px solid #d4d4d4;
-  text-align: center;
   border-radius: 8px;
 
   td {
@@ -49,7 +48,7 @@ input {
 }
 
 button[type="submit"] {
-  background-color: #a6f0ff;
+  background-color: #d2f7ff;
   height: 50px;
   width: 50px;
   border: none;
@@ -63,7 +62,7 @@ button[type="submit"] {
 }
 
 button:hover {
-  background-color: #3bd0ed;
+  background-color: #66e3ff;
 }
 
 table {
