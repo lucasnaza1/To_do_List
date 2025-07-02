@@ -30,3 +30,5 @@ const createRow = (task) => {
 
   tBody.appendChild(tr);
 };
+
+createRow(task);
