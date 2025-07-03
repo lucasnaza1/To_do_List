@@ -43,7 +43,7 @@ const createRow = (task) => {
   const tdStatus = createElement("td");
   const tdActions = createElement("td");
 
-  const select = createSelect();
+  const select = createSelect(status);
 
   const editButton = createElement(
     "button",
