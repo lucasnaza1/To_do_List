@@ -30,6 +30,16 @@ const removeTask = async (id) => {
 
   loadTasks();
 };
+// Função de Atualizar a task
+const updateTask = async ({ id, title, status }) => {
+  await fetch(`http://localhost:3333/tasks/${id}`, {
+    method: "put",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ title, status }),
+  });
+
+  loadTasks();
+};
 // Função para formatar a data
 const formatDate = (dateUTC) => {
   const options = { dateStyle: "long", timeStyle: "short" };
@@ -50,12 +60,13 @@ const createElement = (tag, innerText = "", innerHTML = "") => {
   return elemento;
 };
 // Função que gera botões de edit e delete
-const createSelect = () => {
+const createSelect = (value) => {
   const options =
     "<option value='Pendente'>Pendente</option><option value='Em Progresso'>Em progresso</option><option value='Concluido'>Concluido</option>";
 
   const select = createElement("select", "", options);
 
+  select.value = value;
   return select;
 };
 // Task de teste
@@ -76,6 +87,10 @@ const createRow = (task) => {
   const tdActions = createElement("td");
 
   const select = createSelect(status);
+
+  select.addEventListener("change", ({ target }) =>
+    updateTask({ ...task, status: target.value })
+  );
 
   const editButton = createElement(
     "button",
