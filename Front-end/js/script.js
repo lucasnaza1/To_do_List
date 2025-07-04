@@ -22,6 +22,14 @@ const addTask = async (event) => {
   loadTasks();
   inputTask.value = "";
 };
+// Função para remover a task
+const removeTask = async (id) => {
+  await fetch(`http://localhost:3333/tasks/${id}`, {
+    method: "delete",
+  });
+
+  loadTasks();
+};
 // Função para formatar a data
 const formatDate = (dateUTC) => {
   const options = { dateStyle: "long", timeStyle: "short" };
@@ -82,6 +90,10 @@ const createRow = (task) => {
 
   editButton.classList.add("btn-action");
   deleteButton.classList.add("btn-action");
+
+  deleteButton.addEventListener("click", () => {
+    removeTask(id);
+  });
 
   tdActions.appendChild(editButton);
   tdActions.appendChild(deleteButton);
