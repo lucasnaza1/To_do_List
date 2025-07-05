@@ -62,19 +62,13 @@ const createElement = (tag, innerText = "", innerHTML = "") => {
 // Função que gera botões de edit e delete
 const createSelect = (value) => {
   const options =
-    "<option value='Pendente'>Pendente</option><option value='Em Progresso'>Em progresso</option><option value='Concluido'>Concluido</option>";
+    "<option value='pendente'>pendente</option><option value='em progresso'>em progresso</option><option value='concluido'>concluido</option>";
 
   const select = createElement("select", "", options);
 
   select.value = value;
+
   return select;
-};
-// Task de teste
-const task = {
-  id: 1,
-  title: "Estudar React",
-  created_at: " 02 Julho de 2025 18:06",
-  status: "pendente",
 };
 // Função que cria a linha da tabela
 const createRow = (task) => {

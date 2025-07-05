@@ -7,6 +7,16 @@
   font-family: "DM Sans", sans-serif;
 }
 
+h1 {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  font-family: "DM Sans", sans-serif;
+  font-size: 2.5rem;
+  padding: 10px;
+}
+
 body {
   background-color: #d2f7ff;
 }
@@ -14,7 +24,7 @@ body {
 main {
   background-color: white;
   border-radius: 4px;
-  padding: 20px;
+  padding: 50px;
   width: 90%;
   margin: 50px auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
