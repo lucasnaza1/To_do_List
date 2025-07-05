@@ -1,12 +1,17 @@
+// Seleciona o corpo da tabela
 const tBody = document.querySelector("tbody");
+// Seleciona o formulário de adicionar tarefa
 const addForm = document.querySelector(".add-form");
+// Seleciona o input de texto da tarefa
 const inputTask = document.querySelector(".input-task");
+
 // Função de busca das tasks
 const fetchTasks = async () => {
   const response = await fetch("http://localhost:3333/tasks");
   const tasks = await response.json();
   return tasks;
 };
+
 // Função adicionar task
 const addTask = async (event) => {
   event.preventDefault();
@@ -22,6 +27,7 @@ const addTask = async (event) => {
   loadTasks();
   inputTask.value = "";
 };
+
 // Função para remover a task
 const removeTask = async (id) => {
   await fetch(`http://localhost:3333/tasks/${id}`, {
@@ -30,7 +36,8 @@ const removeTask = async (id) => {
 
   loadTasks();
 };
-// Função de Atualizar a task
+
+// Função de atualizar a task
 const updateTask = async ({ id, title, status }) => {
   await fetch(`http://localhost:3333/tasks/${id}`, {
     method: "put",
@@ -40,6 +47,7 @@ const updateTask = async ({ id, title, status }) => {
 
   loadTasks();
 };
+
 // Função para formatar a data
 const formatDate = (dateUTC) => {
   const options = { dateStyle: "long", timeStyle: "short" };
@@ -47,6 +55,7 @@ const formatDate = (dateUTC) => {
 
   return date;
 };
+
 // Função que cria elementos HTML
 const createElement = (tag, innerText = "", innerHTML = "") => {
   const elemento = document.createElement(tag);
@@ -59,7 +68,8 @@ const createElement = (tag, innerText = "", innerHTML = "") => {
 
   return elemento;
 };
-// Função que gera botões de edit e delete
+
+// Função que cria o select de status
 const createSelect = (value) => {
   const options =
     "<option value='pendente'>pendente</option><option value='em progresso'>em progresso</option><option value='concluido'>concluido</option>";
@@ -70,6 +80,7 @@ const createSelect = (value) => {
 
   return select;
 };
+
 // Função que cria a linha da tabela
 const createRow = (task) => {
   const { id, title, created_at, status } = task;
@@ -82,6 +93,7 @@ const createRow = (task) => {
 
   const select = createSelect(status);
 
+  // Atualiza status ao selecionar uma nova opção
   select.addEventListener("change", ({ target }) =>
     updateTask({ ...task, status: target.value })
   );
@@ -103,11 +115,13 @@ const createRow = (task) => {
   editInput.value = title;
   editForm.appendChild(editInput);
 
+  // Atualiza título ao submeter o form
   editForm.addEventListener("submit", () => {
     event.preventDefault();
     updateTask({ id, title: editInput.value, status });
   });
 
+  // Ao clicar no botão de editar, mostra o input
   editButton.addEventListener("click", () => {
     tdTitle.innerText = "";
     tdTitle.appendChild(editForm);
@@ -116,6 +130,7 @@ const createRow = (task) => {
   editButton.classList.add("btn-action");
   deleteButton.classList.add("btn-action");
 
+  // Ao clicar no botão de deletar, remove a task
   deleteButton.addEventListener("click", () => {
     removeTask(id);
   });
@@ -132,6 +147,7 @@ const createRow = (task) => {
 
   return tr;
 };
+
 // Função que irá buscar as tasks no banco de dados e carregar na tela
 const loadTasks = async () => {
   const tasks = await fetchTasks();
@@ -144,5 +160,7 @@ const loadTasks = async () => {
   });
 };
 
+// Evento que adiciona a task ao submeter o formulário
 addForm.addEventListener("submit", addTask);
+// Carrega as tasks ao iniciar
 loadTasks();
