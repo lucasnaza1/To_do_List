@@ -26,5 +26,5 @@ router.put(
   tasksController.updateTask
 );
 
-// Exporta o roteador
+// Exporta o router
 module.exports = router;
