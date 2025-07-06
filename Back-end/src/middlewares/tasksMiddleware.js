@@ -1,3 +1,4 @@
+// Função que valida se o campo 'title' está presente e não está vazio
 const validateBody = (req, res, next) => {
   const { body } = req;
 
@@ -10,6 +11,8 @@ const validateBody = (req, res, next) => {
 
   next();
 };
+
+// Função que valida se o campo 'status' está presente e não está vazio
 const validateStatus = (req, res, next) => {
   const { body } = req;
 
@@ -22,6 +25,8 @@ const validateStatus = (req, res, next) => {
 
   next();
 };
+
+// Exporta as funções de validação
 module.exports = {
   validateBody,
   validateStatus,
