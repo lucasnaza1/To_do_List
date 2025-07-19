@@ -142,6 +142,3 @@ btn-action {
 .btn-action:nth-child(2):hover {
   background-color: rgb(255, 0, 0);
 }
-
-@media (max-width: 800px;) {
-}
